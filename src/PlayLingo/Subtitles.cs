@@ -78,7 +78,7 @@ public static class Subtitles
     {
         // ts like "00:00:01,000"
         var fixedTs = ts.Replace(',', '.');
-        if (TimeSpan.TryParseExact(fixedTs, "hh\:mm\:ss\.fff", CultureInfo.InvariantCulture, out var t))
+        if (TimeSpan.TryParseExact(fixedTs, @"hh\:mm\:ss\.fff", CultureInfo.InvariantCulture, out var t))
             return t;
         return TimeSpan.Zero;
     }
@@ -86,6 +86,6 @@ public static class Subtitles
     private static string FormatSrtTimestamp(TimeSpan ts)
     {
         // format as 00:00:01,000
-        return ts.ToString("hh\:mm\:ss\,fff", CultureInfo.InvariantCulture);
+        return ts.ToString(@"hh\:mm\:ss\,fff", CultureInfo.InvariantCulture);
     }
 }
