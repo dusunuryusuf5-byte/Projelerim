@@ -21,6 +21,20 @@
    pytest
    ```
 
+## Çeviri ✨
+Bu proje basit bir çeviri aracını içerir (`translator` paketi). Şu an için küçük, çevrimdışı bir sözlük kullanılıyor; örnek kullanım:
+
+```python
+from translator import translate
+
+print(translate("hello", src="en", dest="tr"))  # -> "merhaba"
+print(translate("merhaba", src="tr", dest="en"))  # -> "hello"
+```
+
+Desteklenen diller: `en`, `tr`.
+
+---
+
 ## Hata ayıklama 🔧
 - VS Code'da `Python: Pytest` konfigürasyonunu kullanarak testleri hata ayıklayabilirsiniz.
 - GitHub Actions: `.github/workflows/ci.yml` her `push` ve `pull_request` için testleri çalıştırır.
