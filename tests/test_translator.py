@@ -1,7 +1,7 @@
 import logging
 import pytest
 
-from translator import translate, Translator
+from playlingo import translate, Translator
 
 
 def test_translate_en_to_tr():

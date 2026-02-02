@@ -1,5 +1,5 @@
-# Projelerim
-Çeviri yapma araci
+# PlayLingo — Oyun için Çeviri Aracı
+Kısa ve çevrimdışı bir oyun çeviri aracı.
 
 ## Kurulum ve testler ✅
 1. Sanal ortam oluşturun:
@@ -25,7 +25,7 @@
 Bu proje basit bir çeviri aracını içerir (`translator` paketi). Şu an için küçük, çevrimdışı bir sözlük kullanılıyor; örnek kullanım:
 
 ```python
-from translator import translate
+from playlingo import translate
 
 print(translate("hello", src="en", dest="tr"))  # -> "merhaba"
 print(translate("merhaba", src="tr", dest="en"))  # -> "hello"

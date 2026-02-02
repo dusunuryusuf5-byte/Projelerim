@@ -1,3 +1,10 @@
+[project]
+name = "playlingo"
+version = "0.1.0"
+description = "PlayLingo — a tiny offline translator for games"
+readme = "README.md"
+license = { text = "MIT" }
+
 [tool.pytest.ini_options]
 minversion = "6.0"
 addopts = "-q --color=yes"
