@@ -1,2 +1,5 @@
 pytest>=7.0
 coverage
+srt>=1.4
+requests
+python-dotenv

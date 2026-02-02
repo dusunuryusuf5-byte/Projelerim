@@ -22,13 +22,20 @@ Kısa ve çevrimdışı bir oyun çeviri aracı.
    ```
 
 ## Çeviri ✨
-Bu proje basit bir çeviri aracını içerir (`translator` paketi). Şu an için küçük, çevrimdışı bir sözlük kullanılıyor; örnek kullanım:
+Bu proje basit bir çeviri aracını içerir. Hem **Python** (playlingo) hem de **C#/.NET** (PlayLingo) sürümleri bulunmaktadır.
 
-```python
-from playlingo import translate
+### .NET (C#) kullanım örneği
+Aşağıdaki örnek `PlayLingo` .NET kütüphanesini kullanır (CLI `translate-srt` komutu SRT dosyalarını çevirir):
 
-print(translate("hello", src="en", dest="tr"))  # -> "merhaba"
-print(translate("merhaba", src="tr", dest="en"))  # -> "hello"
+```bash
+# build
+dotnet build src/PlayLingo
+
+# test
+dotnet test tests/PlayLingo.Tests
+
+# CLI (örnek)
+dotnet run --project src/PlayLingo -- translate-srt --input in.srt --output out.srt --src en --dest tr
 ```
 
 Desteklenen diller: `en`, `tr`.

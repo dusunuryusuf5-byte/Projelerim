@@ -9,6 +9,9 @@ import logging
 from typing import Iterable, List, Dict, Any
 
 from .translator import translate
+from typing import Callable, Optional
+
+TranslateFn = Callable[[str, str, str], str]
 
 logger = logging.getLogger(__name__)
 
@@ -18,7 +21,31 @@ def translate_subtitles(
     src: str,
     dest: str,
     field: str = "text",
+    translate_fn: Optional[TranslateFn] = None,
 ) -> List[Dict[str, Any]]:
+    """Translate a sequence of subtitle dicts.
+
+    - subtitles: iterable of dict-like objects (will not be mutated)
+    - src/dest: language codes (e.g., 'en', 'tr')
+    - field: the key in each dict to translate (default: 'text')
+    - translate_fn: optional callable translate_fn(text, src, dest) -> str
+      if omitted the offline `playlingo.translate` is used.
+
+    Returns a new list with translated copies. If a subtitle doesn't contain
+    the requested field, it is left unchanged and a warning is logged.
+    """
+    translated: List[Dict[str, Any]] = []
+
+    if translate_fn is None:
+        translate_fn = translate
+
+    # Validate languages early using a single call
+    try:
+        # If languages invalid, underlying translate will raise
+        _ = translate_fn("__playlingo_sanity_check__", src, dest)
+    except Exception:
+        logger.exception("Language validation failed for %s->%s", src, dest)
+        raise
     """Translate a sequence of subtitle dicts.
 
     - subtitles: iterable of dict-like objects (will not be mutated)
@@ -61,7 +88,7 @@ def translate_subtitles(
             raise TypeError("Subtitle field must be a string")
 
         try:
-            new = translate(original, src=src, dest=dest)
+            new = translate_fn(original, src, dest)
         except Exception:
             logger.exception("Translation failed for subtitle at index %d", i)
             raise
@@ -70,3 +97,29 @@ def translate_subtitles(
         translated.append(copy)
 
     return translated
+
+
+# Helpers for SRT parsing/serialization using the `srt` library
+def srt_to_subs(srt_text: str) -> List[Dict[str, Any]]:
+    import srt
+
+    subs = list(srt.parse(srt_text))
+    result = []
+    for sub in subs:
+        result.append({"index": sub.index, "start": sub.start, "end": sub.end, "text": sub.content})
+    return result
+
+
+def subs_to_srt(subs: Iterable[Dict[str, Any]]) -> str:
+    import srt
+
+    srt_objs = []
+    for sub in subs:
+        index = sub.get("index")
+        start = sub.get("start")
+        end = sub.get("end")
+        content = sub.get("text")
+        if index is None or start is None or end is None or content is None:
+            raise ValueError("Subtitle items must contain index, start, end, and text")
+        srt_objs.append(srt.Subtitle(index=index, start=start, end=end, content=content))
+    return srt.compose(srt_objs)
