@@ -42,6 +42,7 @@ public class Translator
     /// <exception cref="ArgumentException">Thrown when languages are unsupported or equal.</exception>
     public string Translate(string text, string src, string dest)
     {
+        if (text is null) throw new ArgumentNullException(nameof(text));
         if (string.Equals(src, dest, StringComparison.OrdinalIgnoreCase))
             throw new ArgumentException("Source and destination must differ", nameof(dest));
 
