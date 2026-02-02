@@ -1,0 +1,13 @@
+site_name: PlayLingo Documentation
+site_author: PlayLingo
+nav:
+  - Home: index.md
+  - Usage: usage.md
+  - Changelog: changelog.md
+  - API: api.md
+theme:
+  name: material
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/dusunuryusuf5-byte/Projelerim
