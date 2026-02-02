@@ -6,10 +6,19 @@ using System.Text;
 
 namespace PlayLingo;
 
+/// <summary>
+/// Subtitle record representing an SRT block.
+/// </summary>
 public record Subtitle(int Index, TimeSpan Start, TimeSpan End, string Text, string? Caption = null);
 
+/// <summary>
+/// Utilities for parsing, composing and translating SRT subtitles.
+/// </summary>
 public static class Subtitles
 {
+    /// <summary>
+    /// Parse an SRT text into a list of <see cref="Subtitle"/> records.
+    /// </summary>
     public static List<Subtitle> ParseSrt(string srt)
     {
         var blocks = srt.Split(new[] { "\r\n\r\n", "\n\n" }, StringSplitOptions.RemoveEmptyEntries);
@@ -28,6 +37,9 @@ public static class Subtitles
         return result;
     }
 
+    /// <summary>
+    /// Compose SRT text from <see cref="Subtitle"/> records.
+    /// </summary>
     public static string ComposeSrt(IEnumerable<Subtitle> subs)
     {
         var sb = new StringBuilder();
@@ -43,6 +55,9 @@ public static class Subtitles
         return sb.ToString();
     }
 
+    /// <summary>
+    /// Translate subtitle text or caption field using provided <paramref name="translator"/>.
+    /// </summary>
     public static List<Subtitle> TranslateSubtitles(IEnumerable<Subtitle> subtitles, Translator translator, string src, string dest, string field = "text")
     {
         if (translator is null) throw new ArgumentNullException(nameof(translator));

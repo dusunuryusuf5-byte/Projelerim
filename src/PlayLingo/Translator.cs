@@ -3,10 +3,16 @@ using System.Collections.Generic;
 
 namespace PlayLingo;
 
+/// <summary>
+/// Simple translator with a small, in-memory phrase dictionary.
+/// </summary>
 public class Translator
 {
     private readonly Dictionary<string, Dictionary<string, string>> _translations;
 
+    /// <summary>
+    /// Initialize the built-in translation dictionary.
+    /// </summary>
     public Translator()
     {
         _translations = new()
@@ -30,6 +36,10 @@ public class Translator
         };
     }
 
+    /// <summary>
+    /// Translate <paramref name="text"/> from <paramref name="src"/> to <paramref name="dest"/>.
+    /// </summary>
+    /// <exception cref="ArgumentException">Thrown when languages are unsupported or equal.</exception>
     public string Translate(string text, string src, string dest)
     {
         if (string.Equals(src, dest, StringComparison.OrdinalIgnoreCase))
@@ -41,7 +51,7 @@ public class Translator
 
         var phrase = (text ?? string.Empty).Trim().ToLowerInvariant();
         if (_translations[key].TryGetValue(phrase, out var translated))
-            return translated;
+            return translated!; // value is non-null by construction
 
         // If not found, return original text unchanged
         return text;

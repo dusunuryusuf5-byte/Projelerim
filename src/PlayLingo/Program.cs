@@ -4,8 +4,14 @@ using System.Linq;
 
 namespace PlayLingo;
 
+/// <summary>
+/// CLI entrypoint for the PlayLingo .NET tool.
+/// </summary>
 public static class Program
 {
+    /// <summary>
+    /// Main entrypoint. Supported command: <c>translate-srt</c>.
+    /// </summary>
     public static int Main(string[] args)
     {
         if (args is null || args.Length == 0)

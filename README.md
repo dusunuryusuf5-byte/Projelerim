@@ -1,4 +1,6 @@
 # PlayLingo — Oyun için Çeviri Aracı
+![.NET CI](https://github.com/dusunuryusuf5-byte/Projelerim/actions/workflows/dotnet.yml/badge.svg) ![Python CI](https://github.com/dusunuryusuf5-byte/Projelerim/actions/workflows/ci.yml/badge.svg)
+
 Kısa ve çevrimdışı bir oyun çeviri aracı.
 
 ## Kurulum ve testler ✅

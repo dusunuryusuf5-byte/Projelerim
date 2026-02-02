@@ -1,0 +1,14 @@
+/workspaces/Projelerim/src/PlayLingo/obj/Debug/net8.0/PlayLingo.GeneratedMSBuildEditorConfig.editorconfig
+/workspaces/Projelerim/src/PlayLingo/obj/Debug/net8.0/PlayLingo.AssemblyInfoInputs.cache
+/workspaces/Projelerim/src/PlayLingo/obj/Debug/net8.0/PlayLingo.AssemblyInfo.cs
+/workspaces/Projelerim/src/PlayLingo/obj/Debug/net8.0/PlayLingo.csproj.CoreCompileInputs.cache
+/workspaces/Projelerim/src/PlayLingo/obj/Debug/net8.0/PlayLingo.sourcelink.json
+/workspaces/Projelerim/src/PlayLingo/bin/Debug/net8.0/PlayLingo.deps.json
+/workspaces/Projelerim/src/PlayLingo/bin/Debug/net8.0/PlayLingo.dll
+/workspaces/Projelerim/src/PlayLingo/bin/Debug/net8.0/PlayLingo.pdb
+/workspaces/Projelerim/src/PlayLingo/bin/Debug/net8.0/PlayLingo.xml
+/workspaces/Projelerim/src/PlayLingo/obj/Debug/net8.0/PlayLingo.dll
+/workspaces/Projelerim/src/PlayLingo/obj/Debug/net8.0/refint/PlayLingo.dll
+/workspaces/Projelerim/src/PlayLingo/obj/Debug/net8.0/PlayLingo.xml
+/workspaces/Projelerim/src/PlayLingo/obj/Debug/net8.0/PlayLingo.pdb
+/workspaces/Projelerim/src/PlayLingo/obj/Debug/net8.0/ref/PlayLingo.dll
