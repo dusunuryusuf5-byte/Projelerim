@@ -112,11 +112,16 @@ dotnet run --project src/PlayLingo -- translate-srt --input in.srt --output out.
   python -m venv .venv
   source .venv/bin/activate
   pip install -r requirements.txt
+  # veya sistem genel kurulum için
+  ./install.sh
   ```
 - Windows
   ```bat
   setup.bat
+  install.bat
   ```
+
+Not: `install.sh`/`install.bat` proje içine launch script'leri ekler (Linux için `/usr/local/bin` veya Windows için `run_playlingo.bat`).
 
 ## Başlatma
 - GUI: `python -m playlingo.gui` veya Windows'ta `start.bat gui` veya `start_gui.bat`
