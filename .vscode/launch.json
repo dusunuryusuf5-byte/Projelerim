@@ -1,0 +1,36 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: Pytest",
+      "type": "python",
+      "request": "launch",
+      "module": "pytest",
+      "args": [],
+      "justMyCode": true
+    },
+    {
+      "name": "Python: Run PlayLingo GUI",
+      "type": "python",
+      "request": "launch",
+      "module": "playlingo.gui",
+      "justMyCode": false
+    },
+    {
+      "name": "Python: Run PlayLingo GUI (Debug)",
+      "type": "python",
+      "request": "launch",
+      "module": "playlingo.gui",
+      "justMyCode": false,
+      "env": {"PLAYLINGO_DEBUG": "1"}
+    },
+    {
+      "name": "C# .NET: Launch PlayLingo",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/src/PlayLingo/bin/Debug/net10.0/PlayLingo.dll",
+      "args": []
+    }
+  ]
+}

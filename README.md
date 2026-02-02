@@ -23,6 +23,22 @@ Kısa ve çevrimdışı bir oyun çeviri aracı. Site: https://dusunuryusuf5-byt
    pytest
    ```
 
+  ### Sistem geneli kurulum
+
+  Linux/macOS (önerilen):
+
+  ```bash
+  ./setup.sh          # oluşturur ve bağımlılıkları yükler
+  ./install.sh        # sistem launcherlari oluşturur (sudo gerekebilir)
+  ```
+
+  Windows:
+
+  ```bat
+  setup.bat
+  install.bat         # proje kökünde run_playlingo.bat dosyalarını oluşturur
+  ```
+
 ## Çeviri ✨
 Bu proje basit bir çeviri aracını içerir. Hem **Python** (playlingo) hem de **C#/.NET** (PlayLingo) sürümleri bulunmaktadır.
 
@@ -85,8 +101,33 @@ dotnet run --project src/PlayLingo -- translate-srt --input in.srt --output out.
 
 ---
 
+## GUI: Hızlı Çeviri Aracı 🖥️
+- Basit bir GUI uygulaması eklendi (`playlingo.gui`) — kopyaladığınız metni hızlıca çevirir ve SRT dosyanızı "monitor" modunda gerçek zamanlı olarak izleyip altyazı göründüğünde çevirisini overlay pencerede gösterir.
+- Overlay görünümü özelleştirilebilir: arka plan rengi, metin rengi, font aile/size ve transparanlık ayarlanabilir. Ayarlar penceresini `Settings` butonundan açabilirsiniz; ayarlar `~/.playlingo_overlay.json` içinde saklanır.
+- Çalıştırma (Windows): `start_gui.bat` — veya `python -m playlingo.gui` (her platformda çalışır).
+
+## Kurulum (setup) ⚙️
+- Linux / macOS
+  ```bash
+  python -m venv .venv
+  source .venv/bin/activate
+  pip install -r requirements.txt
+  ```
+- Windows
+  ```bat
+  setup.bat
+  ```
+
+## Başlatma
+- GUI: `python -m playlingo.gui` veya Windows'ta `start.bat gui` veya `start_gui.bat`
+- GUI (debug): `start_debug.sh` (Linux/macOS), `start_debug.bat` (Windows), veya VS Code'da `Python: Run PlayLingo GUI (Debug)` konfigürasyonu
+- Run tests (debug): `run_tests_debug.sh` / `run_tests_debug.bat` — `PLAYLINGO_DEBUG=1` altında testleri çalıştırır ve in-memory logs toplayacaktır.
+- CLI (.NET): `start.bat translate-srt --input in.srt --output out.srt --src en --dest tr`
+
 ## Hata ayıklama 🔧
-- VS Code'da `Python: Pytest` konfigürasyonunu kullanarak testleri hata ayıklayabilirsiniz.
+- VS Code: `Python: Pytest`, `Python: Run PlayLingo GUI` ve `C# .NET: Launch PlayLingo` konfigürasyonları eklendi; GUI ve .NET uygulamaları debug modda çalıştırılabilir.
 - GitHub Actions: `.github/workflows/ci.yml` ve `.github/workflows/dotnet.yml` her `push` ve `pull_request` için testleri çalıştırır.
+
+- Lokal debug (GUI): `PLAYLINGO_DEBUG=1 python -m playlingo.gui` veya `./start_debug.sh` ile debug seviyesinde log alabilirsiniz.
 
 ---

@@ -5,3 +5,5 @@ requests
 python-dotenv
 mkdocs
 mkdocs-material
+psutil>=5.9
+Pillow>=10.0
